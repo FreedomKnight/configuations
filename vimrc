@@ -12,8 +12,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'storyn26383/emmet-vim'
 Plug 'tpope/vim-surround'
 
-Plug 'kylef/apiblueprint.vim'
-
 Plug 'scrooloose/syntastic'
 
 Plug 'stephpy/vim-php-cs-fixer'
@@ -34,6 +32,7 @@ Plug 'toyamarinyon/vim-swift'
 Plug 'udalov/kotlin-vim'
 
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 Plug 'godlygeek/tabular'
 
@@ -45,8 +44,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'leafgarland/typescript-vim'
 
-Plug 'junkblocker/patchreview-vim'
-Plug 'codegram/vim-codereview'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
 call plug#end()
 
 "====================== Settings =======================
@@ -102,6 +101,7 @@ function! UpdateTags()
 endfunction
 
 autocmd BufWritePost *.php,*.cpp,*.cc,*.h,*.c call UpdateTags()
+autocmd BufWritePost *.php,*.cpp,*.cc,*.h,*.c %retab!
 
 "======================= Air Line ==========================
 let g:airline_theme="tomorrow"
@@ -151,7 +151,7 @@ let g:indentLine_leadingSpaceEnabled = 0
 let g:indentLine_color_term = 239
 
 let g:indentLine_leadingSpaceChar = '.'
-autocmd FileType html,css,php,c,cpp,swift,python,ruby :IndentLinesEnable
+autocmd FileType html,css,php,c,cpp,swift,python,ruby,dart,go :IndentLinesEnable
 
 "=========================== indentLine ============================
 let g:NERDTreeDirArrows = 1
@@ -187,3 +187,15 @@ vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
 
 " Extract method from selection
 vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+
+"========================== Flutter ==============================
+
+let g:flutter_show_log_on_run = 0
+nnoremap <leader>fa :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug<cr>
+
+"====================== Language Server ==========================
+let g:lsc_auto_map = v:true
