@@ -44,8 +44,12 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'leafgarland/typescript-vim'
 
+Plug 'rhysd/vim-wasm'
+
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 "====================== Settings =======================
@@ -68,7 +72,7 @@ set hidden " leave buffer without save
 
 autocmd FileType make setlocal noexpandtab
 autocmd FileType php setlocal omnifunc=phpactor#Complete
-autocmd FileType js,vue,css,html,typescript setlocal sw=2 sts=2 ts=2
+autocmd FileType js,vue,css,html,typescript,javascript setlocal sw=2 sts=2 ts=2
 
 nmap <F2> :ctags -R<CR>
 nmap <F4> :w<CR>:make<CR>
