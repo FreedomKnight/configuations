@@ -50,6 +50,9 @@ Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'AndrewRadev/splitjoin.vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "====================== Settings =======================
@@ -201,5 +204,38 @@ nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
 
-"====================== Language Server ==========================
-let g:lsc_auto_map = v:true
+"========================== Vim-Go ===============================
+
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+
+nnoremap <leader>gr :GoRun . <CR>
+nnoremap <leader>gf :GoTestFunc<CR>
+nnoremap <leader>gt :GoTest<CR>
+nnoremap <leader>gb :GoBuild<CR>
+nnoremap <leader>gi :GoImplements<CR>
+nnoremap <leader>gd :GoDescribe<CR>
+map [q :cprevious<CR>
+map ]q :cnext<CR>
+
+"========================== CoC ================================
+
+let g:coc_disable_startup_warning = 1
+
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
