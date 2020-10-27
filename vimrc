@@ -9,6 +9,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'schickling/vim-bufonly'
 Plug 'Yggdroot/indentLine'
+
 Plug 'storyn26383/emmet-vim'
 Plug 'tpope/vim-surround'
 
@@ -18,6 +19,10 @@ Plug 'stephpy/vim-php-cs-fixer'
 Plug 'StanAngeloff/php.vim'
 Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' } 
 Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
+
+Plug 'vim-vdebug/vdebug'
+Plug 'vim-test/vim-test'
+Plug 'benmills/vimux'
 
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
@@ -46,13 +51,7 @@ Plug 'leafgarland/typescript-vim'
 
 Plug 'rhysd/vim-wasm'
 
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart'
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'AndrewRadev/splitjoin.vim'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "====================== Settings =======================
@@ -75,7 +74,7 @@ set hidden " leave buffer without save
 
 autocmd FileType make setlocal noexpandtab
 autocmd FileType php setlocal omnifunc=phpactor#Complete
-autocmd FileType js,vue,css,html,typescript,javascript setlocal sw=2 sts=2 ts=2
+autocmd FileType js,vue,css,html,typescript,javascript,yaml setlocal sw=2 sts=2 ts=2
 
 nmap <F2> :ctags -R<CR>
 nmap <F4> :w<CR>:make<CR>
@@ -149,8 +148,6 @@ let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = '--standard=psr2'
 
 
-" php namespace
-
 "=========================== indentLine ============================
 
 let g:indentLine_enabled = 0
@@ -204,38 +201,20 @@ nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
 
-"========================== Vim-Go ===============================
+"========================== vdebug ==============================
 
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
-
-nnoremap <leader>gr :GoRun . <CR>
-nnoremap <leader>gf :GoTestFunc<CR>
-nnoremap <leader>gt :GoTest<CR>
-nnoremap <leader>gb :GoBuild<CR>
-nnoremap <leader>gi :GoImplements<CR>
-nnoremap <leader>gd :GoDescribe<CR>
-map [q :cprevious<CR>
-map ]q :cnext<CR>
-
-"========================== CoC ================================
-
-let g:coc_disable_startup_warning = 1
-
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
+if !exists('g:vdebug_options')
+  let g:vdebug_options = {}
 endif
+let g:vdebug_options.port = 9001
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"========================== vimtest =============================
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+let test#strategy = 'vimux'
+let g:test#preserve_screen = 0
+let test#php#phpunit#executable = 'XDEBUG_CONFIG="remote_enable=1" ./vendor/bin/phpunit'
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
