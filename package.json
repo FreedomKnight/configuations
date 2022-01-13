@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "coc-git": ">=1.8.1",
+    "coc-go": ">=1.0.0",
+    "coc-java": ">=1.5.4",
+    "coc-phpls": ">=2.2.1",
+    "coc-tsserver": ">=1.8.6",
+    "coc-vetur": ">=1.2.5",
+    "coc-yaml": ">=1.6.1"
+  }
+}
