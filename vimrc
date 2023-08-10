@@ -13,7 +13,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'storyn26383/emmet-vim'
 Plug 'tpope/vim-surround'
 
-Plug 'scrooloose/syntastic'
 
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'StanAngeloff/php.vim'
@@ -23,38 +22,28 @@ Plug 'StanAngeloff/php.vim'
 
 Plug 'jwalton512/vim-blade'
 
-Plug 'vim-vdebug/vdebug'
+"Plug 'vim-vdebug/vdebug'
+Plug 'puremourning/vimspector'
 Plug 'vim-test/vim-test'
-Plug 'benmills/vimux'
 
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
+Plug 'benmills/vimux'
 
 Plug 'digitaltoad/vim-pug'
 Plug 'storyn26383/vim-vue'
-
-Plug 'pangloss/vim-javascript'
-
-Plug 'toyamarinyon/vim-swift'
-
-Plug 'udalov/kotlin-vim'
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 
 Plug 'godlygeek/tabular'
 
-Plug 'plasticboy/vim-markdown'
-
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'leafgarland/typescript-vim'
-
 Plug 'rhysd/vim-wasm'
 
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'github/copilot.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
@@ -134,16 +123,16 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#coc#enabled = 1
 
 "========================== PHP ============================
-function! PhpSyntaxOverride()
-    " Put snippet overrides in this function.
-    hi! link phpDocTags phpDefine
-    hi! link phpDocParam phpType
-endfunction
-
-augroup phpSyntaxOverride
-    autocmd!
-    autocmd FileType php call PhpSyntaxOverride()
-augroup END
+"function! PhpSyntaxOverride()
+"    " Put snippet overrides in this function.
+"    hi! link phpDocTags phpDefine
+"    hi! link phpDocParam phpType
+"endfunction
+"
+"augroup phpSyntaxOverride
+"    autocmd!
+"    autocmd FileType php call PhpSyntaxOverride()
+"augroup END
 
 "=========================== php-cs-fixer ============================
 let g:php_cs_fixer_rules = '@PSR12'
@@ -175,38 +164,6 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeGlyphReadOnly = "RO"
 
-
-"========================== Phpactor ==============================
-" Include use statement
-"nmap <Leader>u :call phpactor#UseAdd()<CR>
-"
-"" Invoke the context menu
-"nmap <Leader>mm :call phpactor#ContextMenu()<CR>
-"
-"" Invoke the navigation menu
-"nmap <Leader>nn :call phpactor#Navigate()<CR>
-"
-"" Goto definition of class or class member under the cursor
-"nmap <Leader>o :call phpactor#GotoDefinition()<CR>
-"
-"" Transform the classes in the current file
-"nmap <Leader>tt :call phpactor#Transform()<CR>
-"
-"" Generate a new class (replacing the current file)
-"nmap <Leader>cc :call phpactor#ClassNew()<CR>
-"
-"" Extract expression (normal mode)
-"nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
-"
-"" Extract expression from selection
-"vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
-"
-"" Extract method from selection
-"vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
-
-"autocmd FileType php nnoremap <buffer> <C-]> :call phpactor#GotoDefinition()<CR>
-"autocmd FileType php nnoremap <buffer> <C-t> :call  phpactor#GotoImplementations()<CR>
-
 "========================== Flutter ==============================
 
 let g:flutter_show_log_on_run = 0
@@ -217,12 +174,12 @@ nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
 
 "========================== vdebug ==============================
-
-if !exists('g:vdebug_options')
-  let g:vdebug_options = {}
-endif
-let g:vdebug_options.port = 9003
-
+"
+"if !exists('g:vdebug_options')
+"  let g:vdebug_options = {}
+"endif
+"let g:vdebug_options.port = 9003
+"
 "========================== vimtest =============================
 
 let test#strategy = 'vimux'
@@ -390,3 +347,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"======================== CoC Vim ==============================
+
+autocmd FileType scss setl iskeyword+=@-@
