@@ -1,0 +1,8 @@
+version: "2"
+services:
+  os:
+    build:
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    volumes:
+      - ~/.docker/${APP_NAME}/data/workspace:/home/FreedomKnight/
