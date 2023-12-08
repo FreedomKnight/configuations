@@ -68,6 +68,7 @@ set hidden " leave buffer without save
 set foldmethod=syntax
 set foldlevelstart=99
 set foldlevel=1
+set redrawtime=10000
 
 autocmd FileType make setlocal noexpandtab
 "autocmd FileType php setlocal omnifunc=phpactor#Complete
@@ -107,7 +108,7 @@ autocmd BufWritePost *.php,*.cpp,*.cc,*.h,*.c call UpdateTags()
 autocmd BufWritePost *.php,*.cpp,*.cc,*.h,*.c %retab!
 
 "======================= Air Line ==========================
-let g:airline_theme="tomorrow"
+let g:airline_theme="simple"
 let g:airline_powerline_fonts = 1
 " set status line
 set laststatus=2
@@ -194,7 +195,10 @@ nmap <silent> t<C-g> :TestVisit<CR>
 "========================== CoC ==============================
 " :CocInstall coc-phpls coc-tsserver coc-vetur
 
-autocmd BufWritePre *.go *.php :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.php :call CocAction('runCommand', 'editor.action.organizeImport')
+highlight CocFloating ctermfg=white ctermbg=black
+highlight CocErrorFloat ctermfg=white ctermbg=black
+highlight CocMenueSel ctermfg=white ctermbg=black
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " " delays and poor user experience.
@@ -351,3 +355,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "======================== CoC Vim ==============================
 
 autocmd FileType scss setl iskeyword+=@-@
+
+"====================== Vim Spector ==============================
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
