@@ -42,6 +42,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'rhysd/vim-wasm'
 
+Plug 'charlespascoe/vim-go-syntax'
+
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'github/copilot.vim'
 
@@ -199,6 +201,8 @@ autocmd BufWritePre *.php :call CocAction('runCommand', 'editor.action.organizeI
 highlight CocFloating ctermfg=white ctermbg=black
 highlight CocErrorFloat ctermfg=white ctermbg=black
 highlight CocMenueSel ctermfg=white ctermbg=black
+highlight Visual ctermfg=black ctermbg=gray
+highlight CocHighlightText ctermfg=black ctermbg=gray
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " " delays and poor user experience.
