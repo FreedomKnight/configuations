@@ -1,0 +1,29 @@
+live_config_reload: true
+
+env:
+  TERM: xterm-256color
+
+window:
+  startup_mode: Maximized
+  decorations: transparent
+  dynamic_title: false
+  padding:
+    x: 2
+    y: 2
+
+font:
+  normal:
+    family: SauceCodePro Nerd Font
+    style: Regular
+  size: 14
+  offset:
+    y: 4
+  glyph_offset:
+    y: 2
+  builtin_box_drawing: true
+
+shell:
+  program: /bin/zsh
+  args:
+    - -lic
+    - 'tmux new -ADs FreedomKnight'
