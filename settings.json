@@ -1,0 +1,227 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "vim.leader": "\\",
+    "vim.surround": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "g",
+                "y"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "g"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "g"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ]
+        },
+        {
+            "before": [
+                "t",
+                "<C-n>"
+            ],
+            "commands": [
+                "testing.runAtCursor"
+            ]
+        },
+        {
+            "before": [
+                "t",
+                "<C-f>"
+            ],
+            "commands": [
+                "testing.runCurrentFile"
+            ]
+        },
+        {
+            "before": [
+                "d",
+                "<C-n>"
+            ],
+            "commands": [
+                "testing.debugAtCursor"
+            ]
+        },
+        {
+            "before": [
+                "d",
+                "<C-f>"
+            ],
+            "commands": [
+                "testing.debugCurrentFile"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "t",
+                "t"
+            ],
+            "commands": [
+                "extension.goToTest"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "t",
+                "f"
+            ],
+            "commands": [
+                "go.generate.test.file"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "t",
+                "c"
+            ],
+            "commands": [
+                "go.generate.test.function"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "a"
+            ],
+            "commands": [
+                "workbench.actions.view.problems"
+            ]
+        },
+        {
+            "before": [
+                "\\",
+                "r",
+                "n"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "\\",
+                "a"
+            ],
+            "commands": [
+                "filesExplorer.findInWorkspace"
+            ]
+        },
+        {
+            "before": [
+                "\\",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        }
+    ],
+    "git.autofetch": true,
+    "go.testFlags": [
+        "-v"
+    ],
+    "go.testEnvVars": {
+        "DATABASE_HOST": "localhost",
+        "DATABASE_PORT": "5432",
+        "DATABASE_USER": "postgres",
+        "DATABASE_PASSWORD": "postgres",
+        "DATABASE_NAME": "unittest-${workspaceFolderBasename}"
+    },
+    "go.toolsEnvVars": {
+        "DATABASE_HOST": "localhost",
+        "DATABASE_PORT": "5432",
+        "DATABASE_USER": "postgres",
+        "DATABASE_PASSWORD": "postgres",
+        "DATABASE_NAME": "unittest-${workspaceFolderBasename}"
+    },
+    "go.testEnvFile": "${workspaceFolder}/.env",
+    "clock.alignment": "Right",
+    "clock.format": "HH:MM",
+    "testing.automaticallyOpenPeekView": "never",
+    "protoc": {
+        "options": [
+            "--proto_path=proto"
+        ]
+    },
+    "redhat.telemetry.enabled": true,
+    "phpunit.args": [
+        "-c",
+        "phpunit.xml"
+    ],
+    "phpunit.command": "docker-compose -f ${userHome}/Documents/local-docker/docker-compose.yml exec -w /var/www/${workspaceFolderBasename} php-fpm-8.2 /bin/sh -c",
+    "phpunit.phpunit": "vendor/bin/phpunit",
+    "intelephense.environment.phpVersion": "8.2.0",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "projectManager.git.baseFolders": [
+        "~/Documents"
+    ],
+    "projectManager.git.ignoredFolders": [
+        "node_modules",
+        "out",
+        "typings",
+        "test",
+        ".haxelib",
+        "vendors"
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Listen for Xdebug",
+                "type": "php",
+                "request": "launch",
+                "port": 9003,
+                "stopOnEntry": false,
+                "pathMappings": {
+                    "/var/www/${workspaceFolderBasename}/": "${workspaceFolder}"
+                }
+            }
+        ],
+        "compounds": []
+    }
+}
