@@ -23,6 +23,17 @@ return {
     },
   },
   config = function()
-    require('neo-tree').setup {}
+    require('neo-tree').setup { 
+      window = {
+        mappings = {
+          ["o"] = "open",
+          ["?"] = {
+            "show_help",
+            nowait = false,
+            config = { title = "Order by", prefix_key = "o" },
+          },
+        },
+      }
+    }
   end,
 }
