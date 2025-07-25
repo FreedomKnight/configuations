@@ -26,7 +26,10 @@ return {
     require('neo-tree').setup { 
       window = {
         mappings = {
-          ["o"] = "open",
+          ["o"] = {
+            "open",
+            nowait = true,
+          },
           ["?"] = {
             "show_help",
             nowait = false,
