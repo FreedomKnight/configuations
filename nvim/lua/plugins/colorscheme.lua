@@ -1,4 +1,5 @@
 vim.o.termguicolors = true
+
 return {
   "catppuccin/nvim",
   name = "catppuccin", 
@@ -8,5 +9,10 @@ return {
     neotree = true,
     gitsigns = true,
     barbar = true,
+    indent_blankline = {
+      enabled = true,
+      scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
+      colored_indent_levels = false,
+    },
   },
 }

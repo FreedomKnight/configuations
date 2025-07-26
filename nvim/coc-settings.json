@@ -1,3 +1,5 @@
 {
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "volar.takeOverMode.enabled": true,
+  "typescript.preferences.includePackageJsonAutoImports": "on"
 }
